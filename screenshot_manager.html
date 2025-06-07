@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截图管理 - 文献助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="../pdf.js/build/pdf.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modern.css">
+    </head>
+<body class="bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 min-h-screen">
+    <div id="navbar-container"></div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">截图管理</h1>
+                <p class="text-gray-600 mt-1">管理您的文献截图和标注</p>
+            </div>
+            <div class="flex space-x-4">
+                <button id="openUploadModalBtn" class="modern-btn modern-btn-secondary">
+                    <i class="fas fa-upload mr-2"></i>上传截图
+                </button>
+                <button id="openBatchProcessModalBtn" class="modern-btn modern-btn-primary">
+                    <i class="fas fa-magic mr-2"></i>批量处理
+                    <span class="premium-badge ml-2">PRO</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="modern-card p-4 mb-8">
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flex-1">
+                    <input type="text"
+                           placeholder="搜索截图..."
+                           class="modern-input-search w-full"
+                           id="searchInput">
+                </div>
+                <div class="flex space-x-4">
+                    <select class="modern-input" id="filterType">
+                        <option value="all">所有类型</option>
+                        <option value="figure">图表</option>
+                        <option value="table">表格</option>
+                        <option value="text">文本</option>
+                    </select>
+                    <select class="modern-input" id="filterSort">
+                        <option value="newest">最新上传</option>
+                        <option value="oldest">最早上传</option>
+                        <option value="name">名称排序</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="screenshot-grid" id="screenshotGrid">
+            <div class="screenshot-card">
+                <img src="path/to/screenshot.jpg" alt="文献截图">
+                <div class="screenshot-overlay"></div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900">图1: 实验结果对比</h3>
+                    <div class="screenshot-tags">
+                        <span class="screenshot-tag">图表</span>
+                        <span class="screenshot-tag">实验</span>
+                    </div>
+                    <div class="screenshot-stats">
+                        <span class="screenshot-stat">
+                            <i class="fas fa-eye"></i>
+                            <span>128</span>
+                        </span>
+                        <span class="screenshot-stat">
+                            <i class="fas fa-download"></i>
+                            <span>15</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="screenshot-actions">
+                    <button class="modern-btn modern-btn-secondary" data-action="edit" data-id="1">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="modern-btn modern-btn-primary" data-action="download" data-id="1">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="screenshot-card premium-feature">
+                <img src="path/to/screenshot2.jpg" alt="高级截图">
+                <div class="premium-lock">
+                    <div class="premium-lock-content">
+                        <i class="fas fa-crown text-3xl text-yellow-500 mb-2"></i>
+                        <p class="text-sm text-gray-600 mb-2">升级到专业版解锁高级功能</p>
+                        <button id="upgradeToProBtn" class="modern-btn modern-btn-primary">
+                            立即升级
+                        </button>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="flex justify-center mt-8">
+            <nav class="flex items-center space-x-2">
+                <button class="modern-btn modern-btn-secondary">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="modern-btn modern-btn-primary">1</button>
+                <button class="modern-btn modern-btn-secondary">2</button>
+                <button class="modern-btn modern-btn-secondary">3</button>
+                <button class="modern-btn modern-btn-secondary">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </main>
+
+    <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="modern-modal w-full max-w-lg mx-4">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">上传截图</h2>
+                <form id="uploadForm" class="space-y-4">
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                        <input type="file" id="fileInput" class="hidden" accept="image/*" multiple>
+                        <label for="fileInput" class="cursor-pointer">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-600">点击或拖拽文件到此处上传</p>
+                            <p class="text-sm text-gray-500 mt-1">支持 JPG、PNG 格式</p>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">标题</label>
+                            <input type="text" class="modern-input" placeholder="输入截图标题">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">类型</label>
+                            <select class="modern-input">
+                                <option value="figure">图表</option>
+                                <option value="table">表格</option>
+                                <option value="text">文本</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">标签</label>
+                        <input type="text" class="modern-input" placeholder="输入标签，用逗号分隔">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">描述</label>
+                        <textarea class="modern-input" rows="3" placeholder="添加截图描述"></textarea>
+                    </div>
+                </form>
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button id="closeUploadModalBtn" class="modern-btn modern-btn-secondary">取消</button>
+                    <button id="submitUploadBtn" class="modern-btn modern-btn-primary">上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="batchProcessModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="modern-modal w-full max-w-2xl mx-4">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">批量处理截图</h2>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="premium-feature">
+                            <h3 class="font-semibold text-gray-900 mb-2">智能分类</h3>
+                            <p class="text-sm text-gray-600 mb-2">使用AI自动识别并分类截图内容</p>
+                            <button id="upgradeFromBatchModalBtn" class="modern-btn modern-btn-primary w-full">
+                                升级解锁
+                            </button>
+                        </div>
+                        <div class="premium-feature">
+                            <h3 class="font-semibold text-gray-900 mb-2">批量标注</h3>
+                            <p class="text-sm text-gray-600 mb-2">快速为多张截图添加标签和描述</p>
+                            <button id="upgradeFromBatchModalBtn2" class="modern-btn modern-btn-primary w-full">
+                                升级解锁
+                            </button>
+                        </div>
+                    </div>
+                    <div class="premium-feature">
+                        <h3 class="font-semibold text-gray-900 mb-2">数据提取</h3>
+                        <p class="text-sm text-gray-600 mb-2">自动从图表中提取数据并生成表格</p>
+                        <button id="upgradeFromBatchModalBtn3" class="modern-btn modern-btn-primary w-full">
+                            升级解锁
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button id="closeBatchProcessModalBtn" class="modern-btn modern-btn-secondary">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { Navbar } from './js/components/navbar.js';
+        import { Header } from './js/components/header.js';
+        import { setupUserMenu, isAuthenticated } from './js/auth.js';
+        // 导入 screenshot_manager_logic.js，这将是该页面的主要逻辑入口
+        import { initializeScreenshotManagerPage, openUploadModal, closeUploadModal, submitUpload, openBatchProcessModal, closeBatchProcessModal, editScreenshot, downloadScreenshot, upgradeToPro } from './js/screenshot_manager_logic.js';
+
+        // 确保 window.isLocalServer 可用，因为这是您代码中的常见模式
+        window.isLocalServer = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+        console.log('当前运行环境:', window.isLocalServer ? 'HTTP服务器' : '本地文件');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let pageTitleForHeader = document.title || '文献助手';
+            let isProtected = true;
+
+            // 判断当前页面是否需要认证，并获取标题
+            const currentPageFile = window.location.pathname.split('/').pop();
+            if (currentPageFile === 'screenshot_manager.html') {
+                isProtected = true;
+                if (document.querySelector('h1')) {
+                    pageTitleForHeader = document.querySelector('h1').textContent.trim();
+                }
+            } else {
+                isProtected = false; // 例如登录、注册、首页等
+            }
+
+            try {
+                // 初始化 Header，它会处理认证检查和页面重定向
+                Header.init(pageTitleForHeader, isProtected);
+            } catch (e) {
+                console.error("初始化Header时出错:", e);
+            }
+
+            // 初始化导航栏
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                try {
+                    const navbar = new Navbar();
+                    navbar.init(navbarContainer);
+
+                    // 如果用户已认证，则设置用户菜单
+                    if (isAuthenticated()) {
+                        setupUserMenu();
+                        console.log("导航栏已初始化，并为已认证用户设置了用户菜单。");
+                    } else {
+                        console.log("用户未认证，导航栏初始化后跳过了 setupUserMenu 的调用。");
+                    }
+                } catch (e) {
+                    console.error("初始化Navbar或设置用户菜单时出错:", e);
+                }
+            } else {
+                console.error("未能找到ID为 'navbar-container' 的导航栏容器。");
+            }
+
+            // 调用 screenshot_manager_logic.js 中的主初始化函数
+            initializeScreenshotManagerPage();
+
+            // 为动态创建的示例截图卡片按钮（如果它们没有通过 JS 动态绑定）
+            // 或者如果这些示例卡片是静态 HTML，且您希望通过 JS 控制它们
+            // 通常，您会在 renderScreenshots 函数中处理这些事件绑定
+            // 但是为了静态 HTML 示例的兼容性，这里可以额外绑定
+            // 更好的做法是在 renderScreenshots 中统一处理，或者使用事件委托
+            document.querySelectorAll('.screenshot-actions button[data-action="edit"]').forEach(button => {
+                button.addEventListener('click', () => editScreenshot(button.dataset.id));
+            });
+            document.querySelectorAll('.screenshot-actions button[data-action="download"]').forEach(button => {
+                button.addEventListener('click', () => downloadScreenshot(button.dataset.id)); // 或者 downloadScreenshot(button.dataset.path)
+            });
+        });
+    </script>
+</body>
+</html>
