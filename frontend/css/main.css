@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义样式 */
+@layer components {
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
+  }
+  
+  .status-badge-待处理 {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .status-badge-已搜索 {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .status-badge-自动查找中 {
+    @apply bg-teal-100 text-teal-800;
+  }
+  
+  .status-badge-链接已找到,
+  .status-badge-链接已找到-自动 {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .status-badge-链接无效,
+  .status-badge-未找到,
+  .status-badge-自动查找失败,
+  .status-badge-打开-下载失败 {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .status-badge-下载成功 {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .status-badge-打开-下载尝试 {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+} 
