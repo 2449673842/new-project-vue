@@ -1,0 +1,120 @@
+{
+    "47bfb92d552ae8e60f36c379c2a8be88": {
+        "timestamp": "2025-05-17 22:07:43",
+        "zip_filename": "文献包_47bfb92d.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "0a6b456e9bf5e9190de81880dcbe9b58": {
+        "timestamp": "2025-05-17 22:31:13",
+        "zip_filename": "文献包_0a6b456e.zip",
+        "num_articles_requested": 4,
+        "num_articles_success": 4
+    },
+    "dd490cf571b9f7f9f26425272ec3b3bf": {
+        "timestamp": "2025-05-17 22:31:59",
+        "zip_filename": "文献包_dd490cf5.zip",
+        "num_articles_requested": 6,
+        "num_articles_success": 5
+    },
+    "eb4f3211ef5ad375c1df15b27af7ac94": {
+        "timestamp": "2025-05-17 23:39:35",
+        "zip_filename": "文献包_eb4f3211.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "ef5419bbcf2631a5588b0b0590770901": {
+        "timestamp": "2025-05-18 13:40:44",
+        "zip_filename": "文献包_ef5419bb.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "cad89cc23fe07247e6dabc506139eb53": {
+        "timestamp": "2025-05-18 15:00:19",
+        "zip_filename": "文献包_cad89cc2.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "5be5a93d0aeffc80fa153b81cdb9d0b1": {
+        "timestamp": "2025-05-18 18:51:10",
+        "zip_filename": "文献包_5be5a93d.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "2d8c704c70a24be102393da864abd864": {
+        "timestamp": "2025-05-18 19:42:09",
+        "zip_filename": "文献包_2d8c704c.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 4
+    },
+    "a66725a065fe98ffe076be2809b2d430": {
+        "timestamp": "2025-05-18 19:44:26",
+        "zip_filename": "文献包_a66725a0.zip",
+        "num_articles_requested": 5,
+        "num_articles_success": 5
+    },
+    "eff30fc2e81fb2a2f4520648db03419d": {
+        "timestamp": "2025-05-29 13:15:06",
+        "zip_filename": "文献包_eff30fc2.zip",
+        "num_requested": 5,
+        "num_success": 5
+    },
+    "60dbcbd350b04a23126e43ee68076b34": {
+        "timestamp": "2025-05-24 15:56:47",
+        "zip_filename": "文献包_60dbcbd3.zip",
+        "num_requested": 5,
+        "num_success": 5
+    },
+    "6c57cc6c79382827d5d0634b387ec0f0": {
+        "timestamp": "2025-05-28 19:07:42",
+        "zip_filename": "文献包_6c57cc6c.zip",
+        "num_requested": 5,
+        "num_success": 5
+    },
+    "3b3ae1bf89dfbc4ad3127d166c9b05c7": {
+        "timestamp": "2025-05-29 10:34:51",
+        "zip_filename": "文献包_3b3ae1bf.zip",
+        "num_requested": 5,
+        "num_success": 3
+    },
+    "51d79ce5698ff6c2417614a1389ea510": {
+        "timestamp": "2025-05-31 18:10:03",
+        "zip_filename": "文献包_51d79ce5.zip",
+        "num_requested": 1,
+        "num_success": 1
+    },
+    "297a60cdc103d8152a3fe0fbbf93431d": {
+        "timestamp": "2025-06-01 14:56:03",
+        "zip_filename": "文献包_297a60cd.zip",
+        "num_requested": 5,
+        "num_success": 5
+    },
+    "758a39f0258c64001e6b1c243b87ce34": {
+        "timestamp": "2025-06-02 16:37:14",
+        "status": "COMPLETED",
+        "zip_filename": "文献包_758a39f0.zip",
+        "message": null,
+        "error_message": null,
+        "num_requested": 2,
+        "num_success": 2,
+        "failed_items": []
+    },
+    "d8a58f178a933ec0eaae573d0396c1ac": {
+        "timestamp_submitted": "2025-06-03 15:25:34",
+        "job_id": "bc3dfb4d-8eeb-42d8-8993-c7445c257aed",
+        "status": "SUBMITTED",
+        "num_requested": 5,
+        "zip_filename": null,
+        "message": "任务已提交，等待后台处理。",
+        "failed_items": []
+    },
+    "21ccffcf96206dc25bbdd2e7acd410b9": {
+        "timestamp_submitted": "2025-06-03 15:40:24",
+        "job_id": "37861290-a953-4498-96b0-5158d703f0b2",
+        "status": "SUBMITTED",
+        "num_requested": 5,
+        "zip_filename": null,
+        "message": "任务已提交，等待后台处理。",
+        "failed_items": []
+    }
+}
