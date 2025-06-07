@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员订阅 - 文献助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modern.css">
+</head>
+<body class="bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 min-h-screen">
+    <div id="navbar-container"></div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">选择适合您的方案</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                升级到专业版，解锁更多高级功能，提升您的研究效率
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="modern-card p-8 relative">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">基础版</h2>
+                    <p class="text-gray-600 mb-6">适合个人研究者</p>
+                    <div class="text-4xl font-bold text-gray-900 mb-6">
+                        ¥0
+                        <span class="text-lg font-normal text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            基础截图管理
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            最多100张截图
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            基础搜索功能
+                        </li>
+                    </ul>
+                    <button id="selectFreePlanBtn" class="modern-btn modern-btn-secondary w-full">
+                        当前方案
+                    </button>
+                </div>
+            </div>
+
+            <div class="modern-card p-8 relative transform scale-105 border-2 border-blue-500">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="premium-badge px-4 py-1">最受欢迎</span>
+                </div>
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">专业版</h2>
+                    <p class="text-gray-600 mb-6">适合专业研究人员</p>
+                    <div class="text-4xl font-bold text-gray-900 mb-6">
+                        ¥99
+                        <span class="text-lg font-normal text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            无限截图存储
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            AI智能分类
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            批量处理功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            高级数据提取
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            优先技术支持
+                        </li>
+                    </ul>
+                    <button id="selectProPlanBtn" class="modern-btn modern-btn-primary w-full">
+                        升级专业版
+                    </button>
+                </div>
+            </div>
+
+            <div class="modern-card p-8 relative">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">团队版</h2>
+                    <p class="text-gray-600 mb-6">适合研究团队</p>
+                    <div class="text-4xl font-bold text-gray-900 mb-6">
+                        ¥299
+                        <span class="text-lg font-normal text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            专业版所有功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            最多10个团队成员
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            团队协作功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            专属客户经理
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            API接口访问
+                        </li>
+                    </ul>
+                    <button id="selectTeamPlanBtn" class="modern-btn modern-btn-secondary w-full">
+                        联系销售
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">功能对比</h2>
+            <div class="modern-card overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-900">功能</th>
+                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-900">基础版</th>
+                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-900">专业版</th>
+                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-900">团队版</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">截图存储空间</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">100张</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">无限</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">无限</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">AI智能分类</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">批量处理</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">数据提取</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">基础</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">高级</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">高级</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">团队协作</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 text-sm text-gray-900">API访问</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">-</td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-600">
+                                <i class="fas fa-check text-green-500"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">常见问题</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="modern-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">如何升级到专业版？</h3>
+                    <p class="text-gray-600">
+                        点击"升级专业版"按钮，选择支付方式完成付款即可立即升级。支持支付宝、微信支付等多种支付方式。
+                    </p>
+                </div>
+                <div class="modern-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">可以随时取消订阅吗？</h3>
+                    <p class="text-gray-600">
+                        是的，您可以随时在账户设置中取消订阅。取消后，您仍然可以使用当前订阅期内的所有功能。
+                    </p>
+                </div>
+                <div class="modern-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">团队版如何添加成员？</h3>
+                    <p class="text-gray-600">
+                        团队管理员可以在团队设置中邀请成员，通过邮件邀请链接即可快速添加团队成员。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { Navbar } from './js/components/navbar.js';
+        import { Header } from './js/components/header.js';
+        import { isAuthenticated } from './js/auth.js';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化 Header
+            Header.init('会员订阅', true); // '会员订阅' 是标题，true 表示此页面需要登录验证
+
+            // 初始化导航栏
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                const navbar = new Navbar();
+                navbar.init(navbarContainer);
+                // 即使在订阅页面，如果用户已登录，Navbar 也会显示用户菜单
+                if (isAuthenticated()) {
+                    // setupUserMenu() 也可以在这里调用，如果 Navbar.init 没有完全处理用户菜单的事件绑定
+                    // 但通常 Navbar.init 内部的 checkLoginStatusAndUser 和 setupUserMenu 足够
+                }
+            }
+
+            // 选择方案函数
+            function selectPlan(plan) {
+                switch (plan) {
+                    case 'free':
+                        alert('您当前正在使用基础版');
+                        break;
+                    case 'pro':
+                        console.log('Upgrading to Pro plan...');
+                        // 实际的支付流程应在这里实现
+                        alert('升级专业版功能待实现。');
+                        break;
+                    case 'team':
+                        window.location.href = 'contact-sales.html'; // 假设有 contact-sales.html 页面
+                        break;
+                }
+            }
+
+            // 检查当前订阅状态 (仅为演示，实际可能需要 API 调用)
+            function checkSubscription() {
+                const subscription = localStorage.getItem('subscription');
+                if (subscription) {
+                    console.log('Current subscription:', subscription);
+                    // 可以根据订阅状态更新页面 UI
+                }
+            }
+            checkSubscription(); // 页面加载时检查订阅状态
+
+            // 为按钮绑定事件监听器，取代 HTML 中的 onclick
+            const selectFreePlanBtn = document.getElementById('selectFreePlanBtn');
+            const selectProPlanBtn = document.getElementById('selectProPlanBtn');
+            const selectTeamPlanBtn = document.getElementById('selectTeamPlanBtn');
+
+            if (selectFreePlanBtn) {
+                selectFreePlanBtn.addEventListener('click', () => selectPlan('free'));
+            }
+            if (selectProPlanBtn) {
+                selectProPlanBtn.addEventListener('click', () => selectPlan('pro'));
+            }
+            if (selectTeamPlanBtn) {
+                selectTeamPlanBtn.addEventListener('click', () => selectPlan('team'));
+            }
+        });
+    </script>
+</body>
+</html>

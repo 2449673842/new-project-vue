@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文献助手 - 您的智能文献管理工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modern.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1f2937',
+                        secondary: '#374151',
+                        accent: '#3b82f6',
+                        light: '#f9fafb'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 修复页面点击问题 (保留您原来的样式) */
+        * {
+            pointer-events: auto !important;
+        }
+        html, body, div, section, button, a, input, select, textarea, label {
+            pointer-events: auto !important;
+        }
+        body { position: relative; }
+        section { position: relative; z-index: 1; }
+        .modern-btn, a, button {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+        .absolute { pointer-events: none; }
+        .absolute a, .absolute button, .absolute .modern-btn {
+            pointer-events: auto !important;
+        }
+        .modern-btn:hover, a:hover, button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .modal-content, .modal-header, .modal-body, .modal-footer {
+            pointer-events: auto !important;
+        }
+        input, select, textarea {
+            cursor: auto !important;
+            pointer-events: auto !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 min-h-screen" style="pointer-events: auto !important;">
+    <div id="navbar-container"></div>
+
+    <section class="relative overflow-hidden py-20" style="pointer-events: auto !important;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
+            <div class="text-center animate-fadeIn">
+                <h1 class="text-5xl font-bold text-gray-900 mb-6">
+                    科研工作，从此
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">简单</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    使用我们的智能文献管理平台，革新您的科研工作流程。
+                    以前所未有的方式上传、标注、提取数据并组织您的科学文献。
+                </p>
+                <div class="flex justify-center space-x-4 relative z-10">
+                    <a href="register.html" class="modern-btn modern-btn-primary" style="pointer-events: auto !important; cursor: pointer !important;">
+                        立即开始
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <button id="scrollToFeaturesBtn" class="modern-btn modern-btn-secondary" style="pointer-events: auto !important; cursor: pointer !important;">
+                        了解更多
+                        <i class="fas fa-play ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+    </section>
+
+    <section id="features" class="py-24 bg-white/50 backdrop-blur-sm" style="pointer-events: auto !important;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeIn">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">满足您文献研究的一切所需</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    从导入到分析，我们的平台提供研究人员有效管理文献所需的所有工具。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.1s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-blue-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-upload text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">智能导入</h3>
+                    <p class="text-gray-600">
+                        上传包含您文献列表的CSV/Excel文件。我们的系统会自动解析并组织您的参考文献。
+                    </p>
+                </div>
+
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.2s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-green-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-file-pdf text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">PDF管理</h3>
+                    <p class="text-gray-600">
+                        直接在浏览器中存储、查看和标注PDF。支持全屏的高级PDF查看器。
+                    </p>
+                </div>
+
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.3s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-purple-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-camera text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">截图与标注</h3>
+                    <p class="text-gray-600">
+                        从论文中捕获图表、表格和图片。添加描述和元数据，便于轻松组织。
+                    </p>
+                </div>
+
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.4s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-orange-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-chart-line text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">数据提取</h3>
+                    <p class="text-gray-600">
+                        集成WebPlotDigitizer，高效地从图表和图形中提取数值数据。
+                    </p>
+                </div>
+
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.5s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-red-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-brain text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">机器学习就绪数据</h3>
+                    <p class="text-gray-600">
+                        组织您提取的数据以进行机器学习分析。构建数据集，洞察研究新知。
+                    </p>
+                </div>
+
+                <div class="modern-card p-6 animate-fadeIn" style="animation-delay: 0.6s; pointer-events: auto !important;">
+                    <div class="feature-icon bg-indigo-50 p-4 rounded-xl mb-4">
+                        <i class="fas fa-search text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">高级搜索</h3>
+                    <p class="text-gray-600">
+                        使用强大的搜索功能，通过标题、作者、关键词或内容快速找到所需文献。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-gray-50" style="pointer-events: auto !important;">
+        {/* 您可以在这里添加价格方案的内容, 参考 subscription.html */}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">价格方案</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+                选择最适合您研究需求的方案。
+            </p>
+            <a href="subscription.html" class="modern-btn modern-btn-primary">查看详细价格</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white" style="pointer-events: auto !important;">
+         {/* 您可以在这里添加关于我们的内容 */}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">关于我们</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                我们致力于为科研人员提供最高效、智能的文献管理工具，助力科学发现。
+            </p>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-900 text-white py-12" style="pointer-events: auto !important;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">文献助手</h3>
+                    <p class="text-gray-400">
+                        为科研人员打造的现代化文献管理平台。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">首页</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">特色功能</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">价格方案</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">资源</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">帮助中心</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">API文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">博客</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <a href="mailto:support@literature-helper.com" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">
+                                support@literature-helper.com
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">北京市海淀区</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2024 文献助手. 保留所有权利.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors" style="pointer-events: auto !important; cursor: pointer !important;">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { Header } from './js/components/header.js';
+        import { Navbar } from './js/components/navbar.js';
+        import { isAuthenticated, setupUserMenu } from './js/auth.js';
+
+        // 检测运行环境
+        window.isLocalServer = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+        console.log('当前运行环境 (index.html):', window.isLocalServer ? 'HTTP服务器' : '本地文件');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("index.html: DOMContentLoaded");
+
+            // 1. 初始化 Header
+            try {
+                Header.init('首页', false); // '首页' 是标题，false 表示此页面不需要登录
+            } catch (e) {
+                console.error("初始化 Header 时出错 (index.html):", e);
+            }
+
+            // 2. 初始化 Navbar
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                try {
+                    const navbar = new Navbar();
+                    navbar.init(navbarContainer);
+
+                    if (isAuthenticated()) {
+                         setupUserMenu();
+                         console.log("index.html: 用户已登录，已调用 setupUserMenu。");
+                    } else {
+                         console.log("index.html: 用户未登录，跳过 setupUserMenu 的调用。");
+                    }
+                } catch (e) {
+                    console.error("初始化 Navbar 或调用 setupUserMenu 时出错 (index.html):", e);
+                }
+            } else {
+                console.error("未能找到ID为 'navbar-container' 的导航栏容器 (index.html)。");
+            }
+
+            // 3. 绑定滚动到特色功能按钮的事件
+            const scrollToFeaturesBtn = document.getElementById('scrollToFeaturesBtn');
+            if (scrollToFeaturesBtn) {
+                scrollToFeaturesBtn.addEventListener('click', function() {
+                    const featuresSection = document.getElementById('features');
+                    if (featuresSection) {
+                        featuresSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
